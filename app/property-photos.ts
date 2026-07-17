@@ -1,0 +1,76 @@
+const supplyRoot =
+  "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NzYyOTM3NDEyMjcxOTQ5NTkz/original";
+const listingRoot =
+  "https://a0.muscache.com/im/pictures/hosting/Hosting-762937412271949593/original";
+
+type PhotoSpec = ["s" | "l", string, "jpeg" | "png", string?];
+
+const photoSpecs: PhotoSpec[] = [
+  ["s", "4a72ab3e-cd84-44c6-9cca-0c92449177fc", "jpeg", "Beachfront terrace and lagoon view"],
+  ["s", "36347549-59c3-41af-901e-0111912cf8c9", "jpeg", "Villa Piedanlo by the lagoon"],
+  ["l", "0331d697-c088-4a27-b9ce-392247b36eb3", "jpeg", "Beachfront setting at Trou aux Biches"],
+  ["s", "9ee694ea-d017-4a4d-83c5-51b5387a4adc", "jpeg", "Queen bedroom"],
+  ["s", "0534f944-a7f9-4166-adf9-80b9c9e316d4", "jpeg", "Villa Piedanlo exterior"],
+  ["s", "d891d3a6-7a7e-4fcd-8611-07b8d79c7c7d", "jpeg", "Bedroom one with queen bed"],
+  ["s", "cb03d70c-ee98-4ddc-bdb8-6332fed95aba", "jpeg", "Bedroom three with queen bed"],
+  ["s", "972f8238-159b-402c-9199-8c364b8cef6f", "jpeg"],
+  ["s", "d97699e2-c755-4262-b998-2622a578e88b", "jpeg"],
+  ["s", "5003a419-0b6b-4d75-910e-e47ab49f0051", "jpeg"],
+  ["s", "3ed8f74a-3666-4526-964d-716f8e17dd1e", "jpeg"],
+  ["l", "03a0c0d2-e1bd-4aaf-9a83-dfb1443d5402", "jpeg"],
+  ["l", "989fcd6a-baef-4d8d-817c-74e88cd70de8", "jpeg"],
+  ["s", "cf3e51b7-492c-42a6-9970-402c5e7db002", "jpeg"],
+  ["l", "4468f1da-e431-42c2-8cb2-7c2b03783fbe", "jpeg"],
+  ["s", "c725729b-45b6-4f4d-999d-2dc62773c866", "jpeg"],
+  ["s", "408e21d6-a620-4d36-9031-2033fcf5a707", "jpeg"],
+  ["s", "1c625ed0-777a-4229-95a7-7094f81eb760", "jpeg"],
+  ["s", "0148b3d0-6c8d-4e13-801e-97aa3d3df849", "jpeg"],
+  ["s", "a044ebda-4359-45ec-a9b4-da3d56520e9b", "jpeg"],
+  ["s", "4ea509eb-9d0f-4aea-b642-1306074f8f18", "jpeg"],
+  ["s", "982eb8d3-4a50-46dd-9258-722b4b958992", "jpeg"],
+  ["s", "70c9ab2a-760d-483f-9b95-8e8bbd17526c", "jpeg"],
+  ["s", "41def52e-0e13-4d44-baea-75d026ec673e", "jpeg"],
+  ["s", "2fe55500-c598-4c6f-a2d7-17644795de3f", "jpeg"],
+  ["s", "7925196e-00f7-4cd1-88be-8835acecae27", "jpeg"],
+  ["s", "cf19b540-69a6-4040-a78c-086b4289bb24", "jpeg"],
+  ["s", "5870295b-fd56-4260-884f-3eec873fb52f", "jpeg"],
+  ["l", "3a424498-5fc8-40ea-bd50-b0aae1281f80", "jpeg"],
+  ["s", "69f5ee43-bf63-426a-b49c-1c24d7a0f78c", "jpeg"],
+  ["s", "dbc34ad6-85df-46ce-bf29-f595f9f3187d", "jpeg"],
+  ["s", "24edc3c0-bb0f-4d95-be9b-e7916f6fc2f0", "jpeg"],
+  ["s", "5ac13ad4-3ccd-4cd2-913b-8d7e3c0e76a3", "jpeg"],
+  ["s", "dc3965ba-fb37-47f8-bd18-5a6f1d51a45e", "jpeg"],
+  ["s", "d21a4920-dc34-448f-8c27-f541c3ad3338", "jpeg"],
+  ["s", "8b04d8b2-9518-4654-b099-279cef99c1cb", "jpeg"],
+  ["s", "376f25b4-d66b-45c5-aa45-2d866f49af6a", "jpeg"],
+  ["s", "730ee6bd-14d5-48ff-9eba-2fd91410e5a7", "jpeg"],
+  ["l", "eaa8340a-ff00-43b0-a88b-27d499cd9b4e", "png"],
+  ["l", "004191e6-eb3c-465d-8a83-9ce6bf3e50a0", "png"],
+  ["l", "1737bf46-c51a-46cb-8b62-9bad561508df", "jpeg"],
+  ["l", "d9a03b88-cf2e-4898-b1e5-898a1bff5ebe", "jpeg"],
+  ["l", "f8a44d90-23e6-4d11-8368-7bf3bdfae8ee", "jpeg"],
+  ["l", "60cc869c-d923-42b1-ab89-24ce36b1b6bf", "jpeg"],
+  ["l", "e136852e-c5a2-4942-817d-dfe8ba740cbb", "jpeg"],
+  ["l", "912ddee7-e444-4322-845b-c51188357761", "jpeg"],
+  ["l", "0f20b369-324a-48f5-8d00-cc1f7757cf84", "jpeg"],
+  ["l", "ed1393c5-0c61-4c34-b502-60d87f64787d", "jpeg"],
+  ["l", "561f79e8-580b-418d-955c-481c5226ce23", "jpeg"],
+  ["l", "5013c1fb-0fe5-4ff8-a8cf-f34202a76107", "jpeg"],
+  ["l", "94c3897d-b114-45db-8234-052fccb2e079", "jpeg"],
+  ["l", "6ec3d199-9b46-4b80-8d90-302f2eda815c", "jpeg"],
+  ["l", "e79b8640-b534-48e3-a982-e70531ef6fc5", "jpeg"],
+  ["l", "28f0a5ce-4c96-47cf-bc27-4578661039b7", "jpeg"],
+  ["l", "cd48f6a1-8b5b-4fa6-abb4-66bc93f6ab23", "jpeg"],
+  ["l", "0ecd1674-4b97-4373-b810-907f21d7a04d", "jpeg"],
+  ["l", "9163ddc1-98f2-46f6-a44b-b6bcc0f523d1", "jpeg"],
+  ["l", "94260264-1b7a-40cf-9a56-509a7c52d9f9", "jpeg", "Supermarket directly across the road"],
+];
+
+export const propertyPhotos = photoSpecs.map(([root, id, extension, description], index) => ({
+  src: `${root === "s" ? supplyRoot : listingRoot}/${id}.${extension}`,
+  thumb: `${root === "s" ? supplyRoot : listingRoot}/${id}.${extension}?im_w=720`,
+  large: `${root === "s" ? supplyRoot : listingRoot}/${id}.${extension}?im_w=1440`,
+  title: description ?? `Villa Piedanlo photo ${index + 1}`,
+}));
+
+export const heroPhoto = propertyPhotos[0];
