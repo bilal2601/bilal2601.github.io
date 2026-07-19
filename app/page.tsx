@@ -217,22 +217,24 @@ export default function Home() {
       </section>
 
       <section className="amenities-section" id="amenities" aria-labelledby="amenities-title">
-        <div className="amenities-intro">
-          <p className="eyebrow">Included in your stay</p>
-          <h2 id="amenities-title">More than a<br />hotel room</h2>
-          <p>Beach and pool access, your own kitchen, flexible arrival and housekeeping scheduled twice per week.</p>
-        </div>
-        <div className="amenity-grid">
-          <article><span>01</span><h3>Private beach access</h3><p>Step from the house directly toward the beachfront lagoon.</p></article>
-          <article><span>02</span><h3>Shared pool access</h3><p>A refreshing pool shared with the villa behind the house.</p></article>
-          <article><span>03</span><h3>Equipped kitchen</h3><p>Prepare relaxed breakfasts, family meals and drinks at home.</p></article>
-          <article><span>04</span><h3>Wi-Fi</h3><p>Stay connected throughout your visit.</p></article>
-          <article className="amenity-featured"><span>05</span><h3>Housekeeping included</h3><p>Housekeeping service is included, with visits scheduled twice per week.</p></article>
-          <article className="amenity-featured"><span>06</span><h3>Flexible check-in</h3><p>Enjoy an assisted welcome when available, or secure self check-in through the lockbox.</p></article>
-          <article><span>07</span><h3>Ocean and garden views</h3><p>Enjoy the coastal setting from both inside and outside the house.</p></article>
-          <article><span>08</span><h3>Space for six</h3><p>Three queen bedrooms and two bathrooms keep everyone together comfortably.</p></article>
-          <article className="amenity-featured"><span>09</span><h3>Parking for up to two cars</h3><p>Keep up to two cars securely parked inside the property grounds.</p></article>
-          <article className="amenity-featured"><span>10</span><h3>Automatic gate</h3><p>Enter the premises through a remote-controlled automatic gate.</p></article>
+        <div className="amenities-overview">
+          <div className="amenities-intro">
+            <p className="eyebrow">Included in your stay</p>
+            <h2 id="amenities-title">More than a<br />hotel room</h2>
+            <p>Beach and pool access, your own kitchen, flexible arrival and housekeeping scheduled twice per week.</p>
+          </div>
+          <div className="amenity-grid">
+            <article><span>01</span><h3>Private beach access</h3><p>Step from the house directly toward the beachfront lagoon.</p></article>
+            <article><span>02</span><h3>Shared pool access</h3><p>A refreshing pool shared with the villa behind the house.</p></article>
+            <article><span>03</span><h3>Equipped kitchen</h3><p>Prepare relaxed breakfasts, family meals and drinks at home.</p></article>
+            <article><span>04</span><h3>Wi-Fi</h3><p>Stay connected throughout your visit.</p></article>
+            <article className="amenity-featured"><span>05</span><h3>Housekeeping included</h3><p>Housekeeping service is included, with visits scheduled twice per week.</p></article>
+            <article className="amenity-featured"><span>06</span><h3>Flexible check-in</h3><p>Enjoy an assisted welcome when available, or secure self check-in through the lockbox.</p></article>
+            <article><span>07</span><h3>Ocean and garden views</h3><p>Enjoy the coastal setting from both inside and outside the house.</p></article>
+            <article><span>08</span><h3>Space for six</h3><p>Three queen bedrooms and two bathrooms keep everyone together comfortably.</p></article>
+            <article className="amenity-featured"><span>09</span><h3>Parking for up to two cars</h3><p>Keep up to two cars securely parked inside the property grounds.</p></article>
+            <article className="amenity-featured"><span>10</span><h3>Automatic gate</h3><p>Enter the premises through a remote-controlled automatic gate.</p></article>
+          </div>
         </div>
         <details className="all-amenities">
           <summary>See all {amenityCount} listed amenities <span aria-hidden="true">＋</span></summary>
