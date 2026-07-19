@@ -264,7 +264,8 @@ textarea { padding: 12px; resize: vertical; }
 .review-source-row { display: flex; align-items: start; justify-content: space-between; gap: 24px; }
 .review-source-row .text-link { margin-top: 16px; text-align: right; }
 
-.amenities-section { width: min(1240px, calc(100% - 48px)); margin: 0 auto; padding: 140px 0; display: grid; grid-template-columns: 0.8fr 1.4fr; gap: clamp(50px, 8vw, 120px); }
+.amenities-section { width: min(1240px, calc(100% - 48px)); margin: 0 auto; padding: 140px 0; }
+.amenities-overview { display: grid; grid-template-columns: 0.8fr 1.4fr; gap: clamp(50px, 8vw, 120px); }
 .amenities-intro { position: sticky; top: 35px; align-self: start; }
 .amenities-intro > p:last-child { max-width: 350px; margin-top: 26px; color: rgba(23, 50, 71, 0.65); font-size: 14px; line-height: 1.7; }
 .amenity-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
@@ -274,7 +275,7 @@ textarea { padding: 12px; resize: vertical; }
 .amenity-grid h3 { margin: 24px 0 10px; font-family: "Iowan Old Style", Baskerville, Georgia, serif; font-size: 25px; font-weight: 400; }
 .amenity-grid p { margin: 0; color: rgba(23, 50, 71, 0.62); font-size: 13px; line-height: 1.65; }
 .amenity-grid .amenity-featured { background: var(--seafoam); }
-.all-amenities { grid-column: 1 / -1; margin-top: 48px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.all-amenities { margin-top: 48px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .all-amenities summary { min-height: 78px; padding: 0 4px; display: flex; align-items: center; justify-content: space-between; gap: 30px; cursor: pointer; list-style: none; color: var(--teal-dark); font-size: 13px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
 .all-amenities summary::-webkit-details-marker { display: none; }
 .all-amenities summary span { font-size: 24px; font-weight: 400; transition: transform 180ms ease; }
@@ -466,7 +467,7 @@ footer > p a { color: rgba(255,255,255,0.68); }
   .booking-card { width: min(700px, calc(100% - 48px)); }
   .booking-card form { grid-template-columns: 1fr 1fr 0.8fr; }
   .booking-submit { grid-column: 1 / -1; }
-  .amenities-section { grid-template-columns: 1fr; }
+  .amenities-overview { grid-template-columns: 1fr; }
   .amenities-intro { position: static; }
   .all-amenities-grid { grid-template-columns: repeat(2, 1fr); }
   .nearby-grid { grid-template-columns: 1fr; }
@@ -540,7 +541,8 @@ footer > p a { color: rgba(255,255,255,0.68); }
   .review-source-row { flex-direction: column; }
   .review-source-row .text-link { text-align: left; }
 
-  .amenities-section { width: calc(100% - 32px); padding: 82px 0; gap: 38px; }
+  .amenities-section { width: calc(100% - 32px); padding: 82px 0; }
+  .amenities-overview { gap: 38px; }
   .amenity-grid { grid-template-columns: 1fr; }
   .amenity-grid article { min-height: 0; padding: 26px 20px; }
   .amenity-grid article:nth-child(odd) { border-right: 0; }
