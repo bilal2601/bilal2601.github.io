@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
 
 permissions:
   contents: read
@@ -23,6 +25,10 @@ jobs:
         with:
           node-version: 22
       - run: npm install
+      - name: Sync anonymous Airbnb availability
+        env:
+          AIRBNB_ICAL_URL: ${{ secrets.AIRBNB_ICAL_URL }}
+        run: node scripts/sync-availability.mjs
       - run: npm run build:pages
       - uses: actions/configure-pages@v5
         with:
