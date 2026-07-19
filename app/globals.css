@@ -183,6 +183,10 @@ input, select, textarea {
 textarea { padding: 12px; resize: vertical; }
 .booking-submit { white-space: nowrap; min-height: 50px; }
 .form-note { margin: 14px 0 0; padding: 11px 13px; color: var(--teal-dark); background: var(--seafoam); font-size: 12px; line-height: 1.5; }
+.calendar-status { display: flex; align-items: center; gap: 8px; margin: 13px 0 0; color: rgba(23, 50, 71, 0.78); font-size: 11px; font-weight: 700; line-height: 1.4; }
+.calendar-status > span { width: 8px; height: 8px; border-radius: 50%; background: #a7b3b9; box-shadow: 0 0 0 3px rgba(167, 179, 185, 0.16); }
+.calendar-status-ready > span { background: #2da680; box-shadow: 0 0 0 3px rgba(45, 166, 128, 0.15); }
+.calendar-status-unavailable > span { background: #c58a3a; box-shadow: 0 0 0 3px rgba(197, 138, 58, 0.15); }
 .calendar-note { margin: 12px 0 0; color: rgba(23, 50, 71, 0.68); font-size: 11px; line-height: 1.45; }
 
 .trust-strip {
