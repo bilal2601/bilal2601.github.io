@@ -29,7 +29,7 @@ function readDate(block, property) {
   return dateMatch ? `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}` : null;
 }
 
-const ranges = eventBlocks
+const calendarRanges = eventBlocks
   .filter((block) => !/^STATUS:CANCELLED$/m.test(block) && !/^TRANSP:TRANSPARENT$/m.test(block))
   .map((block) => ({
     start: readDate(block, "DTSTART"),
@@ -37,6 +37,18 @@ const ranges = eventBlocks
   }))
   .filter((range) => range.start && range.end && range.start < range.end)
   .sort((a, b) => a.start.localeCompare(b.start));
+
+const currentYear = new Date().getUTCFullYear();
+const familyBlackouts = Array.from({ length: 4 }, (_, index) => {
+  const year = currentYear + index;
+
+  return {
+    start: `${year}-12-25`,
+    end: `${year + 1}-01-09`,
+  };
+});
+
+const ranges = [...calendarRanges, ...familyBlackouts].sort((a, b) => a.start.localeCompare(b.start));
 
 const blocked = [];
 
