@@ -75,7 +75,7 @@ export default function Home() {
         className="hero"
         id="top"
         aria-labelledby="hero-title"
-        style={{ backgroundImage: `url("${propertyPhotos[0].large}"), linear-gradient(125deg, #d9ece9, #78c6ce)` }}
+        style={{ backgroundImage: `url("/villa-piedanlo-hero.jpg"), linear-gradient(125deg, #d9ece9, #78c6ce)` }}
       >
         <div className="hero-shade" />
         <div className="hero-copy">
