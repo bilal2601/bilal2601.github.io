@@ -1,11 +1,16 @@
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { amenityCount, amenityGroups } from "./property-amenities";
 import { propertyPhotos } from "./property-photos";
 
 const WHATSAPP_NUMBER = "23057281705";
 const BOOKING_EMAIL = "piedanlovilla@gmail.com";
+
+type AvailabilityData = {
+  generatedAt: string;
+  blocked: Array<{ start: string; end: string }>;
+};
 
 function WhatsAppIcon() {
   return (
@@ -19,6 +24,31 @@ export default function Home() {
   const bookingRef = useRef<HTMLDivElement>(null);
   const [bookingNote, setBookingNote] = useState("");
   const [enquiryOpen, setEnquiryOpen] = useState(false);
+  const [availability, setAvailability] = useState<AvailabilityData | null>(null);
+  const [calendarState, setCalendarState] = useState<"loading" | "ready" | "unavailable">("loading");
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch(`/availability.json?ts=${Date.now()}`, {
+      cache: "no-store",
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Availability calendar unavailable");
+        return response.json();
+      })
+      .then((data: AvailabilityData) => {
+        if (!Array.isArray(data.blocked)) throw new Error("Invalid availability calendar");
+        setAvailability(data);
+        setCalendarState("ready");
+      })
+      .catch((error: Error) => {
+        if (error.name !== "AbortError") setCalendarState("unavailable");
+      });
+
+    return () => controller.abort();
+  }, []);
 
   function focusBooking() {
     bookingRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -33,6 +63,21 @@ export default function Home() {
     const checkIn = String(formData.get("checkIn") ?? "");
     const checkOut = String(formData.get("checkOut") ?? "");
     const guests = String(formData.get("guests") ?? "");
+
+    if (checkOut <= checkIn) {
+      setBookingNote("Check-out must be after check-in.");
+      return;
+    }
+
+    const conflictingRange = availability?.blocked.find(
+      (range) => checkIn < range.end && checkOut > range.start,
+    );
+
+    if (conflictingRange) {
+      setBookingNote("Sorry, part of that stay is already unavailable. Please choose different dates or message Shaheen for alternatives.");
+      return;
+    }
+
     const message = `Hi Shaheen, I would like to check Villa Piedanlo for ${guests} guest${guests === "1" ? "" : "s"}, from ${checkIn} to ${checkOut}. Could you please confirm availability and the best direct rate?`;
 
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
@@ -124,7 +169,13 @@ export default function Home() {
             </button>
           </form>
           {bookingNote && <p className="form-note" role="status">{bookingNote}</p>}
-          <p className="calendar-note">Your dates open in WhatsApp for Shaheen to confirm personally—no payment is taken.</p>
+          <p className={`calendar-status calendar-status-${calendarState}`}>
+            <span aria-hidden="true" />
+            {calendarState === "ready" && "Live Airbnb availability connected"}
+            {calendarState === "loading" && "Checking the live availability calendar"}
+            {calendarState === "unavailable" && "Live calendar temporarily unavailable—Shaheen will confirm manually"}
+          </p>
+          <p className="calendar-note">Unavailable dates are checked before WhatsApp opens. Final availability is confirmed personally by Shaheen, and no payment is taken.</p>
         </div>
       </section>
 
